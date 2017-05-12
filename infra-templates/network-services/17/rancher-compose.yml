@@ -2,7 +2,10 @@
     name: Network Services
     version: v0.1.2
     minimum_rancher_version: v1.5.4-rc1
+<<<<<<< HEAD
     maximum_rancher_version: v1.5.99
+=======
+>>>>>>> upstream/v1.6.1-rc4
     questions:
     - variable: DNS_RECURSER_TIMEOUT
       label: Timeout for Rancher DNS Recurser

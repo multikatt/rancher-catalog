@@ -1,5 +1,9 @@
 name: Network Services
+<<<<<<< HEAD
 version: v0.1.2
+=======
+version: v0.2.0
+>>>>>>> upstream/v1.6.1-rc4
 category: Framework
 labels:
   io.rancher.certified: rancher

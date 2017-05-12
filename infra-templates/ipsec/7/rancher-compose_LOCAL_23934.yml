@@ -1,11 +1,8 @@
 .catalog:
-  name: "Rancher VXLAN"
-  version: "v0.0.7"
+  name: "Rancher IPsec"
+  version: "0.0.7"
   minimum_rancher_version: v1.5.4-rc1
-<<<<<<< HEAD
   maximum_rancher_version: v1.5.99
-=======
->>>>>>> upstream/v1.6.1-rc4
   questions:
     - variable: "DOCKER_BRIDGE"
       label: "Docker Bridge"
@@ -21,7 +18,7 @@
       type: int
     - variable: "SUBNET"
       label: "Subnet"
-      description: "The subnet to use for the managed network."
+      description: "The subnet to use for the managed IPSEC network."
       type: "string"
       default: '10.42.0.0/16'
       required: true
@@ -32,11 +29,11 @@
       default: "false"
       required: true
 
-vxlan:
+ipsec:
   network_driver:
-    name: Rancher VXLAN
+    name: Rancher IPsec
     default_network:
-      name: vxlan
+      name: ipsec
       host_ports: true
       subnets:
       - network_address: $SUBNET
@@ -45,7 +42,7 @@ vxlan:
       dns_search:
       - rancher.internal
     cni_config:
-      '10-rancher-vxlan.conf':
+      '10-rancher.conf':
         name: rancher-cni-network
         type: rancher-bridge
         bridge: $DOCKER_BRIDGE
@@ -53,14 +50,13 @@ vxlan:
         logToFile: /var/log/rancher-cni.log
         isDebugLevel: ${RANCHER_DEBUG}
         isDefaultGateway: true
-        hairpinMode: true
         hostNat: true
         hairpinMode: true
         mtu: ${MTU}
-        linkMTUOverhead: 50
+        linkMTUOverhead: 98
         ipam:
           type: rancher-cni-ipam
           logToFile: /var/log/rancher-cni.log
           isDebugLevel: ${RANCHER_DEBUG}
           routes:
-            - dst: 169.254.169.250/32
+          - dst: 169.254.169.250/32

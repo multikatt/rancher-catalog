@@ -1,5 +1,9 @@
 name: Kubernetes
+<<<<<<< HEAD
 version: v1.5.4-rancher1-4.1
+=======
+version: v1.6.1-rancher1-2
+>>>>>>> upstream/v1.6.1-rc4
 category: Orchestration
 labels:
   io.rancher.certified: rancher
